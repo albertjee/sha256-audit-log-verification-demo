@@ -1,7 +1,7 @@
 # SHA-256 Hash-Chained Audit Log Verification Demo
 
-**Author:** Albert Jee  
-**License:** MIT  
+**Author:** Albert Jee
+**License:** MIT
 **Copyright:** Copyright (c) 2026 Albert Jee. All rights reserved.
 
 This repository demonstrates how a sealed audit log can be independently verified for post-sealing modification.
@@ -16,7 +16,7 @@ It does not publish the private audit-log sealing engine.
 
 ---
 
-![SHA-256 Hash-Chained Audit Sealing](./assets/sha256-hash-chained-audit-sealing.png)
+[![SHA-256 Hash-Chained Audit Sealing](https://github.com/albertjee/sha256-audit-log-verification-demo/raw/main/assets/sha256-hash-chained-audit-sealing.png)](https://github.com/albertjee/sha256-audit-log-verification-demo/blob/main/assets/sha256-hash-chained-audit-sealing.png)
 
 ---
 
@@ -57,7 +57,7 @@ This repository is not a production logging system, SIEM replacement, WORM stora
 
 ## Repository Contents
 
-```text
+```
 sha256-audit-log-verification-demo/
 |
 |-- README.md
@@ -78,14 +78,14 @@ sha256-audit-log-verification-demo/
 
 Clone the repository:
 
-```powershell
+```
 git clone https://github.com/albertjee/sha256-audit-log-verification-demo.git
 cd sha256-audit-log-verification-demo
 ```
 
 Run the verifier:
 
-```powershell
+```
 powershell -ExecutionPolicy Bypass -File ".\tools\Test-AuditLogIntegrity.ps1" `
   -AuditLogPath ".\samples\sealed-audit-log.json" `
   -AnchorPath ".\samples\trusted-anchor.txt"
@@ -93,7 +93,7 @@ powershell -ExecutionPolicy Bypass -File ".\tools\Test-AuditLogIntegrity.ps1" `
 
 Expected result:
 
-```text
+```
 AUDIT LOG INTEGRITY CHECK
 -------------------------
 
@@ -113,35 +113,27 @@ The audit log validates against the trusted hash anchor.
 
 Open the sample audit log:
 
-```text
+```
 samples/sealed-audit-log.json
 ```
 
 Find Event 2 and change:
 
-```json
+```
 "Result":  "Success"
 ```
 
 to:
 
-```json
+```
 "Result":  "Skipped"
 ```
 
-Save the file.
-
-Run the verifier again:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File ".\tools\Test-AuditLogIntegrity.ps1" `
-  -AuditLogPath ".\samples\sealed-audit-log.json" `
-  -AnchorPath ".\samples\trusted-anchor.txt"
-```
+Save the file. Run the verifier again with the same command.
 
 Expected result:
 
-```text
+```
 Result: FAIL
 
 Broken event: 2
@@ -161,11 +153,15 @@ The trusted anchor detects whether the final chain hash still matches the origin
 
 In this demo, the trusted anchor is stored in:
 
-```text
+```
 samples/trusted-anchor.txt
 ```
 
-In a production system, a trusted anchor would normally be stored outside the audit log's administrative boundary, such as in a SIEM, WORM storage, ticketing system, evidence register, or signing service.
+In a production system, the trusted anchor must be stored outside the audit log's administrative boundary. That means it cannot sit in the same storage account, the same tenant, or under the same administrative role as the log itself. If it does, whoever controls the log controls the anchor, and the evidentiary separation collapses.
+
+Appropriate anchor stores include WORM-configured storage with independent retention policy, a separately governed evidence register, a ticketing system that records the hash at seal time, or a signing service with independent key governance.
+
+The hard part is not storing the anchor. The hard part is governing who can write it, who can change retention, who can supersede it, and who can prove those controls later.
 
 ---
 
@@ -214,13 +210,16 @@ The PowerShell verifier and demo code are released under the MIT License.
 
 The architecture graphic, explanatory text, and documentation are copyright (c) 2026 Albert Jee unless otherwise stated.
 
-See [LICENSE](./LICENSE) for details.
+See [LICENSE](https://github.com/albertjee/sha256-audit-log-verification-demo/blob/main/LICENSE) for details.
 
 ---
 
 ## Author
 
-Created by **Albert Jee**  
-Enterprise Identity Architect | IAM Consultant
+Created by **Albert Jee**
+IAM Consultant and Former Microsoft FastTrack Architect
+
+- LinkedIn: [linkedin.com/in/albertjee](https://linkedin.com/in/albertjee)
+- GitHub: [github.com/albertjee](https://github.com/albertjee)
 
 Copyright (c) 2026 Albert Jee. All rights reserved.
