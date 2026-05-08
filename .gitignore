@@ -1,0 +1,22 @@
+# PowerShell local artifacts
+*.ps1.bak
+*.psm1.bak
+*.ps1xml
+
+# Demo temp files
+demo-output/
+temp/
+*.tmp
+
+# Editor/system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Private build tooling - never commit
+private-tools/
+private-output/
+New-SealedAuditLog.ps1
+New-DemoAuditChain.ps1
+Internal-AuditSealingHelpers.psm1
+Repair-DemoAuditChain.ps1

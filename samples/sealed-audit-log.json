@@ -1,0 +1,52 @@
+﻿[
+    {
+        "EventId":  1,
+        "TimestampUtc":  "2026-05-07T19:30:00.000Z",
+        "OperatorId":  "AJee01",
+        "Action":  "AccountDisabled",
+        "TargetObject":  "user:privileged.user@contoso.example",
+        "Result":  "Success",
+        "PreviousHash":  "GENESIS",
+        "EventHash":  "85b3b09dfb03a736e05b4783392e8117b9d3fe7ff8892c9e8bc7a004129ac823"
+    },
+    {
+        "EventId":  2,
+        "TimestampUtc":  "2026-05-07T19:31:15.000Z",
+        "OperatorId":  "OpsAdmin7",
+        "Action":  "RefreshTokensRevoked",
+        "TargetObject":  "user:privileged.user@contoso.example",
+        "Result":  "Success",
+        "PreviousHash":  "85b3b09dfb03a736e05b4783392e8117b9d3fe7ff8892c9e8bc7a004129ac823",
+        "EventHash":  "fa9e9d9eb74b30167aa13d1b59f965cc182f89eaaac656bb6c70f82ef810a63e"
+    },
+    {
+        "EventId":  3,
+        "TimestampUtc":  "2026-05-07T19:32:40.000Z",
+        "OperatorId":  "AJee01",
+        "Action":  "PrivilegedGroupRemoved",
+        "TargetObject":  "group:Privileged-Access-Operators",
+        "Result":  "Success",
+        "PreviousHash":  "fa9e9d9eb74b30167aa13d1b59f965cc182f89eaaac656bb6c70f82ef810a63e",
+        "EventHash":  "82cd77c87b8754912518f39a1882634e70461ca073652d4d215d4000f52d6cc4"
+    },
+    {
+        "EventId":  4,
+        "TimestampUtc":  "2026-05-07T19:34:05.000Z",
+        "OperatorId":  "SecReviewer3",
+        "Action":  "SessionsTerminated",
+        "TargetObject":  "user:privileged.user@contoso.example",
+        "Result":  "Success",
+        "PreviousHash":  "82cd77c87b8754912518f39a1882634e70461ca073652d4d215d4000f52d6cc4",
+        "EventHash":  "50effe5f457ce1108e071b3f6a2eac6f314e68f6017aac6a84ddf918de399204"
+    },
+    {
+        "EventId":  5,
+        "TimestampUtc":  "2026-05-07T19:35:30.000Z",
+        "OperatorId":  "SecReviewer3",
+        "Action":  "EvidenceFinalized",
+        "TargetObject":  "case:OFFBOARDING-DEMO-001",
+        "Result":  "Success",
+        "PreviousHash":  "50effe5f457ce1108e071b3f6a2eac6f314e68f6017aac6a84ddf918de399204",
+        "EventHash":  "a3e6c9fb73b474306de6dc56cadd83c5b612e896d1aaa992746e082c626f0d4c"
+    }
+]
